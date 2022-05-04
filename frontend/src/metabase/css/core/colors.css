@@ -2,13 +2,17 @@
  * NOTE: KEEP SYNCRONIZED WITH COLORS.JS
  */
 :root {
-  --color-brand: #509ee3;
+  /*--color-brand: #509ee3;*/
+  --color-brand: #1a80b6;;
   --color-brand-light: #ddecfa;
   --color-admin-navbar: #7172ad;
   --color-white: #ffffff;
   --color-black: #2e353b;
-  --color-success: #84bb4c;
-  --color-error: #ed6e6e;
+  /*--color-success: #84bb4c;*/
+  --color-success: #a2bc53;
+  /*--color-error: #ed6e6e;*/
+  --color-error: #e64c66;
+  --color-error-background: #ed6e6e55;
   --color-warning: #f9cf48;
   --color-text-dark: #4c5773;
   --color-text-medium: #949aab;
