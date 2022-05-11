@@ -405,6 +405,7 @@ export const RevisionsApi = {
 export const SessionApi = {
   create: POST("/api/session"),
   createWithGoogleAuth: POST("/api/session/google_auth"),
+  createWithHtiAuth: POST("/api/session/hti_auth"),
   delete: DELETE("/api/session"),
   properties: GET("/api/session/properties"),
   forgot_password: POST("/api/session/forgot_password"),

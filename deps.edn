@@ -143,7 +143,9 @@
                                                            org.clojure/tools.logging
                                                            org.clojure/tools.namespace]}
   user-agent/user-agent                     {:mvn/version "0.1.0"}              ; User-Agent string parser, for Login History page & elsewhere
-  weavejester/dependency                    {:mvn/version "0.2.1"}}             ; Dependency graphs and topological sorting
+  weavejester/dependency                    {:mvn/version "0.2.1"}              ; Dependency graphs and topological sorting
+
+  com.hti/hti-auth-server-2                 {:mvn/version "1.0.2"}}             ; HTI auth using Google Identity Platform
 
  ;; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  ;; !!         PLEASE KEEP NEW DEPENDENCIES ABOVE ALPHABETICALLY ORGANIZED AND ADD COMMENTS EXPLAINING THEM.         !!

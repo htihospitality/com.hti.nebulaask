@@ -9,6 +9,7 @@
             [metabase.email.messages :as messages]
             [metabase.events :as events]
             [metabase.integrations.google :as google]
+            [metabase.integrations.hti-auth :as hti]
             [metabase.integrations.ldap :as ldap]
             [metabase.models.login-history :refer [LoginHistory]]
             [metabase.models.session :refer [Session]]
@@ -291,6 +292,26 @@
                                            response
                                            session
                                            (t/zoned-date-time (t/zone-id "GMT")))
+           (throw (ex-info (str disabled-account-message)
+                           {:status-code 401
+                            :errors      {:account disabled-account-snippet}}))))))))
+
+(api/defendpoint POST "/hti_auth"
+  "Login with HTI Auth."
+  [:as {{:keys [token]} :body, :as request}]
+  {token su/NonBlankString}
+
+  ;; Verify the token is valid with HTI Auth
+  (if throttling-disabled?
+    (hti/do-hti-auth request)
+    (http-401-on-error
+     (throttle/with-throttling [(login-throttlers :ip-address) (request.u/ip-address request)]
+       (let [user (hti/do-hti-auth request)
+             {session-uuid :id, :as session} (create-session! :sso user (request.u/device-info request))
+             response {:id (str session-uuid)}
+             user (db/select-one [User :id :is_active], :email (:email user))]
+         (if (and user (:is_active user))
+           (mw.session/set-session-cookie request response session)
            (throw (ex-info (str disabled-account-message)
                            {:status-code 401
                             :errors      {:account disabled-account-snippet}}))))))))

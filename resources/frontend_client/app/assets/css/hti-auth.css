@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.firebaseui-card-content {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+  padding: 0 12px !important;
+}
+
+.logo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
+}
+
+.terms {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #1a80b6 !important;
+  padding: 0px !important;
+}
+
+
+.signform {
+  background-color: #FFF;
+  padding-bottom: 40px;
+  padding-top: 35px;
+  margin: 0 auto;
+  width: 30%;
+  margin-top: 150px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.bts {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  margin-bottom: 5px !important;
+  width: 80%;
+  margin: 10px auto 0px auto;
+  text-align: center;
+  padding: 10px;
+}
+
+.mdl-textfield__input {
+  width: 80% !important;
+  text-align: left;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px 8px;
+  font-size: 14px;
+  font-family: "Roboto", Helvetica, sans-serif;
+}
+
+.mdl-password-reset {
+  width: 100% !important;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px 0px;
+  margin-left: 0px;
+  display: block;
+}
+
+.mdl-button-left {
+  margin-left: 0px;
+  background-color: #383838 !important;
+  color: #f4f4f4;
+  box-shadow: none !important;
+  border-radius: 4px;
+}
+
+.line-center {
+  margin: 0;
+  padding: 0 10px;
+  background: #fff;
+}
+
+.line {
+  color: #DDD;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 5px 0px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.line:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: solid 1px #DDD;
+  z-index: -1;
+}
+
+.headit {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+
+.headit a {
+  text-decoration: none;
+  color: #1a80b6;
+  font-weight: 500;
+}
+
+.sign-up-text {
+  display: inline-block;
+  font-family: "Roboto", Helevetica, sans-serif;
+  font-size: 14px;
+  color: #444;
+}
+
+.sign-in-text {
+  display: none;
+}
+
+
+.firebaseui-auth-container{
+  alignment: center;
+  text-align: center;
+}
+
+a#quickstart-password-reset {
+  text-decoration: none;
+  color: #1a80b6;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+a#quickstart-password-reset:hover {
+  text-decoration: underline;
+}
+
+a.firebaseui-link.firebaseui-tos-link {
+  color: #999999;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.terms p {
+  margin: 0px;
+}
+
+#info-message {
+  color: white;
+  background: #4caf50;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+#error-message {
+  color: white;
+  background: #f44336;
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.error-action {
+  padding: 8px;
+  text-align: center;
+}
+
+.error-group {
+  text-align: left;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 8px
+}
+
+a.error-group {
+  margin-left: 0px;
+}
+
+@media screen  and (max-width: 1440px) and (min-width: 1240px) {
+  .signform { width: 30%; }
+}
+@media screen  and (max-width: 1240px) and (min-width: 1040px) {
+  .signform { width: 40%; }
+}
+@media screen  and (max-width: 1040px) and (min-width: 840px) {
+  .signform { width: 50%; }
+}
+@media screen  and (max-width: 840px) and (min-width: 640px) {
+  .signform { width: 60%; }
+}
+@media screen  and (max-width: 640px) and (min-width: 460px) {
+  .signform {
+    width: 85%;
+    margin-top: 125px;
+  }
+}
+@media screen  and (max-width: 460px) and (min-width: 400px) {
+  .signform {
+    width: 95%;
+    margin-top: 100px;
+  }
+}
+@media screen  and (max-width: 400px) {
+  .signform {
+    width: 100%;
+    margin-top: 100px;
+  }
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #cef;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
