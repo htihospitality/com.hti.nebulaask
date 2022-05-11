@@ -4,7 +4,11 @@ import { SessionApi, UtilApi } from "metabase/services";
 import MetabaseSettings from "metabase/lib/settings";
 import { createThunkAction } from "metabase/lib/redux";
 import { loadLocalization } from "metabase/lib/i18n";
-import { clearGoogleAuthCredentials, deleteSession } from "metabase/lib/auth";
+import {
+  clearGoogleAuthCredentials,
+  clearHtiAuthCredentials,
+  deleteSession,
+} from "metabase/lib/auth";
 import { clearCurrentUser, refreshCurrentUser } from "metabase/redux/user";
 import { refreshSiteSettings } from "metabase/redux/settings";
 import { getUser } from "metabase/selectors/user";
@@ -12,6 +16,7 @@ import { State } from "metabase-types/store";
 import {
   trackLogin,
   trackLoginGoogle,
+  trackLoginHti,
   trackLogout,
   trackPasswordReset,
 } from "./analytics";
@@ -68,11 +73,29 @@ export const loginGoogle = createThunkAction(
   },
 );
 
+export const LOGIN_HTI = "metabase/auth/HTI_GOOGLE";
+export const loginHti = createThunkAction(
+  LOGIN_HTI,
+  (token: string, redirectUrl = "/") => async (dispatch: any) => {
+    try {
+      await SessionApi.createWithHtiAuth({ token });
+      await dispatch(refreshSession());
+      trackLoginHti();
+
+      dispatch(push(redirectUrl));
+    } catch (error) {
+      await clearGoogleAuthCredentials();
+      throw error;
+    }
+  },
+);
+
 export const LOGOUT = "metabase/auth/LOGOUT";
 export const logout = createThunkAction(LOGOUT, () => {
   return async (dispatch: any) => {
     await deleteSession();
     await clearGoogleAuthCredentials();
+    await clearHtiAuthCredentials();
     await dispatch(clearCurrentUser());
     await dispatch(refreshLocale());
     trackLogout();

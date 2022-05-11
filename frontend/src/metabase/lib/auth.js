@@ -2,6 +2,8 @@
 import { t } from "ttag";
 import { SessionApi } from "metabase/services";
 import Settings from "metabase/lib/settings";
+import { getAuth } from "firebase/auth";
+import { getApp } from "firebase/app";
 
 export const deleteSession = async () => {
   try {
@@ -56,5 +58,19 @@ export const clearGoogleAuthCredentials = async () => {
     await googleAuth.signOut();
   } catch (error) {
     console.error("Problem clearing Google Auth credentials", error);
+  }
+};
+
+export const clearHtiAuthCredentials = async () => {
+  const firebaseAuth = getAuth(getApp("auth"));
+
+  if (!firebaseAuth) {
+    return;
+  }
+
+  try {
+    await firebaseAuth.signOut();
+  } catch (error) {
+    console.error("Problem clearing HTI Auth credentials", error);
   }
 };

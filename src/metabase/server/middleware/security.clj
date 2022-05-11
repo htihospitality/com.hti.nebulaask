@@ -66,16 +66,25 @@
                                   (when-not config/is-dev?
                                     (map (partial format "'sha256-%s'") inline-js-hashes)))
                   :child-src    ["'self'"
+                                 ;; Needed for HTI Auth
+                                 "https://nebulaone.firebaseapp.com/"
                                  ;; TODO - double check that we actually need this for Google Auth
                                  "https://accounts.google.com"]
                   :style-src    ["'self'"
-                                 "'unsafe-inline'"]
+                                 "'unsafe-inline'"
+                                 ;; Needed for HTI Auth
+                                 "https://fonts.googleapis.com"]
                   :font-src     ["'self'"
+                                 ;; Needed for HTI Auth
+                                 "https://fonts.gstatic.com"
                                  (when config/is-dev?
                                    "localhost:8080")]
                   :img-src      ["*"
                                  "'self' data:"]
                   :connect-src  ["'self'"
+                                 ;; Needed for HTI Auth
+                                 "https://identitytoolkit.googleapis.com"
+                                 "https://securetoken.googleapis.com"
                                  ;; MailChimp. So people can sign up for the Metabase mailing list in the sign up process
                                  "metabase.us10.list-manage.com"
                                  ;; Google analytics

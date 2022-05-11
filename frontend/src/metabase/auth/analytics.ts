@@ -8,6 +8,10 @@ export const trackLoginGoogle = () => {
   trackStructEvent("Auth", "Google Auth Login");
 };
 
+export const trackLoginHti = () => {
+  trackStructEvent("Auth", "HTI Auth Login");
+};
+
 export const trackLogout = () => {
   trackStructEvent("Auth", "Logout");
 };
