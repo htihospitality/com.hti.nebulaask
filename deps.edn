@@ -444,7 +444,8 @@
   :liquibase
   {:extra-deps  {ch.qos.logback/logback-classic {:mvn/version "1.2.10"}}
    :extra-paths ["dev/src"]
-   :main-opts   ["-m" "dev.liquibase"]}}}
+   :main-opts   ["-m" "dev.liquibase"]}}
+ :mvn/repos {"hti-maven-repo.aws" {:url "s3://hti-maven-repo/release/"}}}
 
   ;; TODO -- consider creating an alias that includes the `./bin` build-drivers & release code as well so we can work
   ;; on them all from a single REPL process.
