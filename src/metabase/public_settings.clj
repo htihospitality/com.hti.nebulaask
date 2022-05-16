@@ -63,7 +63,7 @@
 
 (defsetting site-name
   (deferred-tru "The name used for this instance of Metabase.")
-  :default "Metabase")
+  :default "AskNebula")
 
 ;; `::uuid-nonce` is a Setting that sets a site-wide random UUID value the first time it is fetched.
 (defmethod setting/get-value-of-type ::uuid-nonce
@@ -280,7 +280,7 @@
   :visibility :public
   :type       :string
   :enabled?   premium-features/enable-whitelabeling?
-  :default    "Metabase")
+  :default    "AskNebula")
 
 (defsetting loading-message
   (deferred-tru "Message to show while a query is running.")
