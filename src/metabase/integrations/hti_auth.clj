@@ -55,15 +55,14 @@
   [first-name last-name email]
   (or (db/select-one [User :id :email :last_login] :%lower.email (u/lower-case-en email))
       (hti-auth-create-new-user! {:first_name first-name
-                                     :last_name  last-name
-                                     :email      email})))
+                                  :last_name  last-name
+                                  :email      email})))
 
 (defn do-hti-auth
   "Use HTIAuth to perform an authentication"
   [{{:keys [token]} :body, :as _request}]
   (let [token-claims                           (-> (HtiAuth/getInstance)
                                                  (.verifyIdToken token))
-        _                                      (prn (str "token-claims: " token-claims))
         {:keys [name email]}                   (verify-hti-auth-token-claims token-claims)]
     (log/info (trs "Successfully authenticated HTI Sign-In token for: {0}" name))
     (api/check-500 (hti-auth-fetch-or-create-user! "" name email))))
