@@ -56,7 +56,7 @@
 
 (defsetting site-name
   (deferred-tru "The name used for this instance of Metabase.")
-  :default "Metabase")
+  :default "NebulaASK")
 
 ;; `::uuid-nonce` is a Setting that sets a site-wide random UUID value the first time it is fetched.
 (defmethod setting/get-value-of-type ::uuid-nonce
@@ -265,7 +265,7 @@
   (deferred-tru "This will replace the word \"Metabase\" wherever it appears.")
   :visibility :public
   :type       :string
-  :default    "Metabase")
+  :default    "NebulaASK")
 
 (defsetting application-colors
   (deferred-tru "These are the primary colors used in charts and throughout Metabase. You might need to refresh your browser to see your changes take effect.")
