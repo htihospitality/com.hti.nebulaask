@@ -17,7 +17,7 @@ class DefaultLogoIcon extends Component {
     const { height, width } = this.props;
     return (
       <img
-        src="/app/assets/img/NebulaAsk-logo.png"
+        src="/app/assets/img/AskNebula-logo.png"
         width={width}
         height={height}
       />
