@@ -42,23 +42,23 @@ const Login = ({
         onSignInSuccess={onSignInSuccess}
         logout={false}
       />
-      <AuthLayout>
-        <LoginTitle>{t`Sign in to Metabase`}</LoginTitle>
-        {selection && selection.Panel && (
-          <LoginPanel>
-            <selection.Panel redirectUrl={redirectUrl} />
-          </LoginPanel>
-        )}
-        {!selection && (
-          <ActionList>
-            {providers.map(provider => (
-              <ActionListItem key={provider.name}>
-                <provider.Button isCard={true} redirectUrl={redirectUrl} />
-              </ActionListItem>
-            ))}
-          </ActionList>
-        )}
-      </AuthLayout>
+      {/*<AuthLayout>*/}
+      {/*  <LoginTitle>{t`Sign in to Metabase`}</LoginTitle>*/}
+      {/*  {selection && selection.Panel && (*/}
+      {/*    <LoginPanel>*/}
+      {/*      <selection.Panel redirectUrl={redirectUrl} />*/}
+      {/*    </LoginPanel>*/}
+      {/*  )}*/}
+      {/*  {!selection && (*/}
+      {/*    <ActionList>*/}
+      {/*      {providers.map(provider => (*/}
+      {/*        <ActionListItem key={provider.name}>*/}
+      {/*          <provider.Button isCard={true} redirectUrl={redirectUrl} />*/}
+      {/*        </ActionListItem>*/}
+      {/*      ))}*/}
+      {/*    </ActionList>*/}
+      {/*  )}*/}
+      {/*</AuthLayout>*/}
     </>
   );
 };
