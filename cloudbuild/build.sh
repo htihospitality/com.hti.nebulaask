@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir "~/.m2/"
 echo $MAVEN_SETTINGS > ~/.m2/settings.xml
 
 echo @hti-ui:registry=https://europe-west1-npm.pkg.dev/hti-build/hti-npm/ > ~/.npmrc
