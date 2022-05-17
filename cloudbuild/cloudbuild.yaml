@@ -37,7 +37,7 @@ substitutions:
 
 availableSecrets:
   secretManager:
-    - versionName: projects/1006690200145/secrets/maven-password/versions/3
+    - versionName: projects/1006690200145/secrets/maven-settings/versions/4
       env: 'MAVEN_SETTINGS'
 #    - versionName: projects/1006690200145/secrets/firebase-token/versions/2
 #      env: 'FIREBASE_TOKEN'
