@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir "~/.m2/"
+mkdir "~/.m2"
 echo $MAVEN_SETTINGS
 echo $MAVEN_SETTINGS > ~/.m2/settings.xml
 
