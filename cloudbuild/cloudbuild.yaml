@@ -2,7 +2,7 @@ steps:
 
   # Build uberjar
   - name: clojure:openjdk-11-tools-deps
-    args: ['bash', './cloudbuild/build.sh']
+    args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
     secretEnv: ['MAVEN_SETTINGS']
 
