@@ -1,0 +1,47 @@
+steps:
+
+  # Build uberjar
+  - name: clojure:openjdk-8-lein-2.8.3
+    args: ['bash', '../build/lein.sh']
+    dir: 'server'
+    secretEnv: ['MAVEN_PASSWORD']
+
+  # Build react stuffs
+  - name: gcr.io/cloud-builders/yarn:node-12.18.3
+    entrypoint: /bin/bash
+    dir: 'web'
+    args: ['../build/install.sh']
+    secretEnv: ['GOOGLE_ARTIFACT_PASSWORD']
+
+  # Copy uberjar to compute engine vm
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'scp', 'target/payment-switch.jar', 'payment-switch:/opt/payment-switch/payment-switch.jar', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+    dir: 'server'
+
+  # Restart payment-switch service
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'ssh', 'payment-switch', '--command=/opt/payment-switch/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+    dir: 'server'
+
+  # Deploy static files to firebase hosting
+  # See: https://cloud.google.com/build/docs/deploying-builds/deploy-firebase#using_the_firebase_community_builder
+  - name: gcr.io/hti-build/firebase
+    entrypoint: 'bash'
+    args: ['../build/firebase.sh' , '${_ENV}']
+    dir: 'web'
+    secretEnv: ['FIREBASE_TOKEN']
+
+
+substitutions:
+  _ENV: 'test'
+
+availableSecrets:
+  secretManager:
+    - versionName: projects/1006690200145/secrets/maven-password/versions/3
+      env: 'MAVEN_PASSWORD'
+    - versionName: projects/1006690200145/secrets/firebase-token/versions/2
+      env: 'FIREBASE_TOKEN'
+    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
+      env: 'GOOGLE_ARTIFACT_PASSWORD'
+
+
