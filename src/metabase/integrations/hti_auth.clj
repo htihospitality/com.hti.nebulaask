@@ -29,7 +29,7 @@
 
 (defn- autocreate-user-allowed-for-email? [email]
   (boolean
-   (when-let [domains ["hti-systems.co.za"]]
+   (when-let [domains "hti-systems.co.za"]
      (some
       (partial u/email-in-domain? email)
       (str/split domains #"\s*,\s*")))))
@@ -53,6 +53,8 @@
 
 (s/defn ^:private hti-auth-fetch-or-create-user! :- metabase.models.user.UserInstance
   [first-name last-name email]
+  (log/info "First Name" first-name)
+  (log/info "First Name" last-name)
   (or (db/select-one [User :id :email :last_login] :%lower.email (u/lower-case-en email))
       (hti-auth-create-new-user! {:first_name first-name
                                   :last_name  last-name
@@ -63,6 +65,8 @@
   [{{:keys [token]} :body, :as _request}]
   (let [token-claims                           (-> (HtiAuth/getInstance)
                                                  (.verifyIdToken token))
-        {:keys [name email]}                   (verify-hti-auth-token-claims token-claims)]
+        {:keys [name email]}                   (verify-hti-auth-token-claims token-claims)
+        first-name (subs name 0 (str/index-of name, " "))
+        last-name (subs name (+ 1 (str/index-of name, " ")))]
     (log/info (trs "Successfully authenticated HTI Sign-In token for: {0}" name))
-    (api/check-500 (hti-auth-fetch-or-create-user! "" name email))))
+    (api/check-500 (hti-auth-fetch-or-create-user! first-name  last-name email))))
