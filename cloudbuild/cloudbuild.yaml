@@ -4,7 +4,7 @@ steps:
   - name: clojure:openjdk-11-tools-deps
     args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
-    secretEnv: ['MAVEN_SETTINGS', 'GOOGLE_ARTIFACT_PASSWORD']
+    secretEnv: ['AWS_CREDENTIALS']
 
 #  # Build react stuffs
 #  - name: gcr.io/cloud-builders/yarn:node-12.18.3
@@ -37,11 +37,13 @@ substitutions:
 
 availableSecrets:
   secretManager:
-    - versionName: projects/1006690200145/secrets/maven-settings/versions/4
-      env: 'MAVEN_SETTINGS'
+    - versionName: projects/1006690200145/secrets/aws-credentials/versions/1
+      env: 'AWS_CREDENTIALS'
+#    - versionName: projects/1006690200145/secrets/maven-settings/versions/4
+#      env: 'MAVEN_SETTINGS'
 #    - versionName: projects/1006690200145/secrets/firebase-token/versions/2
 #      env: 'FIREBASE_TOKEN'
-    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
-      env: 'GOOGLE_ARTIFACT_PASSWORD'
+#    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
+#      env: 'GOOGLE_ARTIFACT_PASSWORD'
 
 
