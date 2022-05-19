@@ -4,9 +4,7 @@ export AWS_ACCESS_KEY_ID=$AWS_CREDENTIALS_ACCESS
 export AWS_SECRET_ACCESS_KEY=$AWS_CREDENTIALS_SECRET
 export AWS_DEFAULT_REGION=$AWS_REGION
 
-apt-get install nodejs
 
-npm install yarn
-
+sudo apt-get install yarn
 
 ../bin/build
