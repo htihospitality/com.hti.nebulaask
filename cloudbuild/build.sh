@@ -1,8 +1,11 @@
 #!/bin/bash
 
 mkdir ~/.aws
-echo $AWS_CREDENTIALS | tr '_-' '/+' | base64 -d > ~/.aws/credentials
-echo $AWS_CONFIG | tr '_-' '/+' | base64 -d > ~/.aws/config
+echo [default]  > ~/.aws/credentials
+echo aws_access_key_id = $AWS_CREDENTIALS_ACCESS  >> ~/.aws/credentials
+echo aws_secret_access_key = $AWS_CREDENTIALS_SECRET  >> ~/.aws/credentials
+
+echo $AWS_CONFIG | tr '_-' '/+' > ~/.aws/config
 
 cat ~/.aws/config
 
