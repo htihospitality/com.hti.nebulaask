@@ -1,36 +1,22 @@
 steps:
 
   # Build uberjar
-#  - name: clojure:openjdk-11-tools-deps
-  - name: metabase/ci:java-11-clj-1.11.0.1100.04-2022-build
+  - name: clojure:openjdk-11-tools-deps
     args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
     secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', ]
 
-#  # Build react stuffs
-#  - name: gcr.io/cloud-builders/yarn:node-12.18.3
-#    entrypoint: /bin/bash
-#    dir: 'web'
-#    args: ['../build/install.sh']
-#    secretEnv: ['GOOGLE_ARTIFACT_PASSWORD']
-
-  # Copy uberjar to compute engine vm
-  - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'scp', 'target/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-b']
-    dir: 'server'
-
-  # Restart payment-switch service
-  - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
-    dir: 'server'
-
-#  # Deploy static files to firebase hosting
-#  # See: https://cloud.google.com/build/docs/deploying-builds/deploy-firebase#using_the_firebase_community_builder
-#  - name: gcr.io/hti-build/firebase
-#    entrypoint: 'bash'
-#    args: ['../build/firebase.sh' , '${_ENV}']
-#    dir: 'web'
-#    secretEnv: ['FIREBASE_TOKEN']
+#
+#  # Copy uberjar to compute engine vm
+#  - name: gcr.io/cloud-builders/gcloud
+#    args: ['compute', 'scp', 'target/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+#    dir: 'server'
+#
+#  # Restart payment-switch service
+#  - name: gcr.io/cloud-builders/gcloud
+#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+#    dir: 'server'
+#
 
 
 substitutions:
@@ -44,13 +30,5 @@ availableSecrets:
       env: 'AWS_CREDENTIALS_ACCESS'
     - versionName: projects/1006690200145/secrets/aws-region/versions/1
       env: 'AWS_REGION'
-#    - versionName: projects/1006690200145/secrets/aws-credentials/versions/1
-#      env: 'AWS_CREDENTIALS'
-#    - versionName: projects/1006690200145/secrets/maven-settings/versions/4
-#      env: 'MAVEN_SETTINGS'
-#    - versionName: projects/1006690200145/secrets/firebase-token/versions/2
-#      env: 'FIREBASE_TOKEN'
-#    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
-#      env: 'GOOGLE_ARTIFACT_PASSWORD'
 
 
