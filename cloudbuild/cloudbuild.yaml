@@ -4,7 +4,7 @@ steps:
   - name: clojure:openjdk-11-tools-deps
     args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
-    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_CONFIG', ]
+    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', ]
 
 #  # Build react stuffs
 #  - name: gcr.io/cloud-builders/yarn:node-12.18.3
@@ -41,8 +41,8 @@ availableSecrets:
       env: 'AWS_CREDENTIALS_SECRET'
     - versionName: projects/1006690200145/secrets/aws-credentials-access-key/versions/1
       env: 'AWS_CREDENTIALS_ACCESS'
-    - versionName: projects/1006690200145/secrets/aws-config/versions/1
-      env: 'AWS_CONFIG'
+    - versionName: projects/1006690200145/secrets/aws-region/versions/1
+      env: 'AWS_REGION'
 #    - versionName: projects/1006690200145/secrets/aws-credentials/versions/1
 #      env: 'AWS_CREDENTIALS'
 #    - versionName: projects/1006690200145/secrets/maven-settings/versions/4
