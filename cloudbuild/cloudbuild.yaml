@@ -2,8 +2,15 @@ steps:
 
   # Build uberjar
   - name: clojure:openjdk-11-tools-deps
-    args: ['bash', '../cloudbuild/build.sh']
+#    args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
+#    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', ]
+
+  # Build react stuffs
+  - name: gcr.io/cloud-builders/yarn:node-12.18.3
+    entrypoint: /bin/bash
+    dir: 'web'
+    args: ['../cloudbuild/build.sh']
     secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', ]
 
 #
