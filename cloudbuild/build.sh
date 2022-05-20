@@ -8,10 +8,10 @@ apt update
 apt ugrade -Y
 
 apt install -y nodejs npm
-echo "Node Version:"
-node -v
-echo "npm Version:"
-npm -v
+#echo "Node Version:"
+#node -v
+#echo "npm Version:"
+#npm -v
 echo "installing yarn"
 npm install yarn --force
 echo "yarn version:"
