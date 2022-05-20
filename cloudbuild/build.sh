@@ -13,7 +13,7 @@ node -v
 echo "npm Version:"
 npm -v
 echo "installing yarn"
-npm install yarn
+npm install yarn --force
 echo "yarn version:"
 yarn -v
 
