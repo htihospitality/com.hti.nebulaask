@@ -1,7 +1,8 @@
 steps:
 
   # Build uberjar
-  - name: clojure:openjdk-11-tools-deps
+#  - name: clojure:openjdk-11-tools-deps
+  - name: metabase/ci:java-11-clj-1.11.0.1100.04-2022-build
     args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
     secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', ]
