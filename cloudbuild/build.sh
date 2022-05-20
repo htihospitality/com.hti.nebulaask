@@ -5,6 +5,8 @@ export AWS_SECRET_ACCESS_KEY=$AWS_CREDENTIALS_SECRET
 export AWS_DEFAULT_REGION=$AWS_REGION
 
 apt update
+apt ugrade -Y
+
 apt install -y nodejs npm
 echo "Node Version:"
 node -v
