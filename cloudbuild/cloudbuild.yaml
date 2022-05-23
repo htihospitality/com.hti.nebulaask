@@ -5,6 +5,7 @@ steps:
     args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
     secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
+    timeout: 3600s
 
 
 
