@@ -12,6 +12,8 @@ echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:username=_json_key_base64 >> 
 echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:email=not.valid@email.com >> ~/.npmrc
 echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:always-auth=true >> ~/.npmrc
 
+cat ~/.npmrc
+
 
 echo "Starting update and upgrade"
 apt update
