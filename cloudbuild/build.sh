@@ -12,8 +12,6 @@ echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:username=_json_key_base64 >> 
 echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:email=not.valid@email.com >> ~/.npmrc
 echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:always-auth=true >> ~/.npmrc
 
-cat ~/.npmrc
-
 
 echo "Starting update and upgrade"
 apt update
@@ -23,10 +21,10 @@ echo "Installing Node"
 apt install -y nodejs npm
 
 echo "Installing Yarn"
-npm install yarn --force
+npm install yarn --global --force
 
-echo "Running Yarn"
-yarn
+#echo "Running Yarn"
+#yarn
 
 
 echo "Starting build"
