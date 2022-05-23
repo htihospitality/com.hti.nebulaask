@@ -1,11 +1,11 @@
 steps:
 
   # Build uberjar
-  - name: clojure:openjdk-11-tools-deps
-    args: ['bash', '../cloudbuild/build.sh']
-    dir: 'server'
-    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
-    timeout: 3600s
+#  - name: clojure:openjdk-11-tools-deps
+#    args: ['bash', '../cloudbuild/build.sh']
+#    dir: 'server'
+#    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
+#    timeout: 3600s
 
 
   # Backup jar
@@ -28,15 +28,15 @@ steps:
 substitutions:
   _ENV: 'apps'
 
-availableSecrets:
-  secretManager:
-    - versionName: projects/1006690200145/secrets/aws-credentials-secret-access-key/versions/1
-      env: 'AWS_CREDENTIALS_SECRET'
-    - versionName: projects/1006690200145/secrets/aws-credentials-access-key/versions/1
-      env: 'AWS_CREDENTIALS_ACCESS'
-    - versionName: projects/1006690200145/secrets/aws-region/versions/1
-      env: 'AWS_REGION'
-    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
-      env: 'GOOGLE_ARTIFACT_PASSWORD'
+#availableSecrets:
+#  secretManager:
+#    - versionName: projects/1006690200145/secrets/aws-credentials-secret-access-key/versions/1
+#      env: 'AWS_CREDENTIALS_SECRET'
+#    - versionName: projects/1006690200145/secrets/aws-credentials-access-key/versions/1
+#      env: 'AWS_CREDENTIALS_ACCESS'
+#    - versionName: projects/1006690200145/secrets/aws-region/versions/1
+#      env: 'AWS_REGION'
+#    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
+#      env: 'GOOGLE_ARTIFACT_PASSWORD'
 
 timeout: 3601s
