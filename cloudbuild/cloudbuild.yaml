@@ -4,19 +4,25 @@ steps:
   - name: clojure:openjdk-11-tools-deps
     args: ['bash', '../cloudbuild/build.sh']
     dir: 'server'
-    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', ]
+    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
 
-#
-#  # Copy uberjar to compute engine vm
-#  - name: gcr.io/cloud-builders/gcloud
-#    args: ['compute', 'scp', 'target/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-b']
-#    dir: 'server'
-#
-#  # Restart payment-switch service
-#  - name: gcr.io/cloud-builders/gcloud
-#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
-#    dir: 'server'
-#
+
+
+  # Backup jar
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/backup.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+    dir: 'server'
+
+  # Copy uberjar to compute engine vm
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'scp', 'target/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+    dir: 'server'
+
+  # Restart payment-switch service
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+    dir: 'server'
+
 
 
 substitutions:
@@ -30,5 +36,7 @@ availableSecrets:
       env: 'AWS_CREDENTIALS_ACCESS'
     - versionName: projects/1006690200145/secrets/aws-region/versions/1
       env: 'AWS_REGION'
+    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
+      env: 'GOOGLE_ARTIFACT_PASSWORD'
 
 
