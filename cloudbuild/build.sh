@@ -25,6 +25,10 @@ apt install -y nodejs npm
 echo "Installing Yarn"
 npm install yarn --force
 
+echo "Running Yarn"
+yarn
+
+
 echo "Starting build"
 ../bin/build
 
