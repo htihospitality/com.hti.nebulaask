@@ -22,7 +22,8 @@ apt install -y nodejs npm
 
 echo "Installing Yarn"
 npm install yarn --global --force
-
+echo "Yarn Version"
+yarn -v
 #echo "Running Yarn"
 #yarn
 
