@@ -19,16 +19,9 @@ steps:
 #    dir: 'server'
 
   # Restart payment-switch service
-#  - name: gcr.io/cloud-builders/gcloud
-#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-d']
-#    dir: 'server'
-#
-  # Restart payment-switch service
   - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', 'payment-switch', '--command=/opt/payment-switch/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
+    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-d']
     dir: 'server'
-
-
 
 substitutions:
   _ENV: 'apps'
