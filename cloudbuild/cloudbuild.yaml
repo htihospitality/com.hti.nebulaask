@@ -13,7 +13,7 @@ steps:
 
   # Copy uberjar to compute engine vm
   - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'scp', 'target/uberjar/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-d']
+    args: ['compute', 'scp', '/workspace/target/uberjar/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-d']
     dir: 'server'
 
   # Restart payment-switch service
