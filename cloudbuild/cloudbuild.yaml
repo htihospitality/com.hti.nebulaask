@@ -9,18 +9,23 @@ steps:
 
 
   # Backup jar
-  - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/backup.sh', '--tunnel-through-iap', '--project=hti-${_ENV}', '--zone=europe-west1-d']
-    dir: 'server'
+#  - name: gcr.io/cloud-builders/gcloud
+#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/backup.sh',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
+#    dir: 'server'
 
   # Copy uberjar to compute engine vm
-  - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'scp', 'target/uberjar/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-d']
-    dir: 'server'
+#  - name: gcr.io/cloud-builders/gcloud
+#    args: ['compute', 'scp', 'target/uberjar/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-d']
+#    dir: 'server'
 
   # Restart payment-switch service
+#  - name: gcr.io/cloud-builders/gcloud
+#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-d']
+#    dir: 'server'
+#
+  # Restart payment-switch service
   - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-d']
+    args: ['compute', 'ssh', 'payment-switch', '--command=/opt/payment-switch/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-b']
     dir: 'server'
 
 
