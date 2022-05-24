@@ -1,21 +1,21 @@
 steps:
 
 #   Build uberjar
-#  - name: clojure:openjdk-11-tools-deps
+  - name: clojure:openjdk-11-tools-deps
 #    args: ['bash', '../cloudbuild/build.sh']
 #    dir: 'server'
 #    secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
 
 
   # Backup jar
-  - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/list.sh',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
-    dir: 'server'
+#  - name: gcr.io/cloud-builders/gcloud
+#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/list.sh',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
+#    dir: 'server'
 
   # Backup jar
-#  - name: gcr.io/cloud-builders/gcloud
-#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/backup.sh',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
-#    dir: 'server'
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/backup.sh',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
+    dir: 'server'
 
   # Copy uberjar to compute engine vm
 #  - name: gcr.io/cloud-builders/gcloud
