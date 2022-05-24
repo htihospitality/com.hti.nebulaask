@@ -35,5 +35,7 @@ substitutions:
 #      env: 'AWS_REGION'
 #    - versionName: projects/1006690200145/secrets/google-artifact-password/versions/1
 #      env: 'GOOGLE_ARTIFACT_PASSWORD'
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 timeout: 3600s
