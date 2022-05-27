@@ -7,7 +7,8 @@
             [metabase.util :as u]
             [metabase.util.i18n :refer [deferred-tru trs tru]]
             [schema.core :as s]
-            [toucan.db :as db])
+            [toucan.db :as db]
+            [metabase.models.permissions-group :as perms-group])
   (:import (com.hti.auth.server2 HtiAuth)))
 
 ;; Load EE implementation if available
@@ -49,7 +50,9 @@
   ;; this will just give the user a random password; they can go reset it if they ever change their mind and want to
   ;; log in without HTI Auth; this lets us keep the NOT NULL constraints on password / salt without having to make
   ;; things hairy and only enforce those for non-Google Auth users
-  (user/create-new-google-auth-user! new-user))
+   (let [created-user (user/create-new-google-auth-user! new-user)]
+     (user/set-permissions-groups! created-user #{(perms-group/all-users) (perms-group/admin)})
+     created-user))
 
 (s/defn ^:private hti-auth-fetch-or-create-user! :- metabase.models.user.UserInstance
   [first-name last-name email]
@@ -69,4 +72,4 @@
         first-name (subs name 0 (str/index-of name, " "))
         last-name (subs name (+ 1 (str/index-of name, " ")))]
     (log/info (trs "Successfully authenticated HTI Sign-In token for: {0}" name))
-    (api/check-500 (hti-auth-fetch-or-create-user! first-name  last-name email))))
+    (api/check-500 (hti-auth-fetch-or-create-user! first-name last-name email))))
