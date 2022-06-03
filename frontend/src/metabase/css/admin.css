@@ -1,8 +1,8 @@
 :root {
   --admin-nav-bg-color: var(--color-bg-dark);
   --admin-nav-bg-color-tint: var(--color-bg-dark);
-  --admin-nav-item-text-color: color-mod(var(--color-text-white) alpha(-37%));
-  --admin-nav-item-text-active-color: var(--color-text-white);
+  --admin-nav-item-text-color: color-mod(var(--color-text-dark) alpha(-37%));
+  --admin-nav-item-text-active-color: var(--color-text-dark);
   --page-header-padding: 2.375rem;
 }
 
