@@ -3179,15 +3179,15 @@
     protobufjs "^6.10.0"
     yargs "^16.2.0"
 
-"@hti-auth/auth-state@^1.1.1":
-  version "1.1.1"
-  resolved "https://europe-west1-npm.pkg.dev/hti-build/hti-npm/@hti-auth/auth-state/-/@hti-auth/auth-state-1.1.1.tgz#ae27962a07e1e3a3ee38d29a3f1aeef22de45ef7"
-  integrity sha512-BjD0kyF8brxUqLZAwr06iJyHALoZNRO8ZgMwdxSDAhmBQrm3U1nNrbDH26HztscEN1qxc/RS81p5sB+7zxm0wA==
+"@hti-auth/auth-state@^2.0.1":
+  version "2.0.1"
+  resolved "https://europe-west1-npm.pkg.dev/hti-build/hti-npm/@hti-auth/auth-state/-/@hti-auth/auth-state-2.0.1.tgz#4d33d8ae5d8a6acb127a32230201ab3207fefb54"
+  integrity sha512-JJ8MxBwpGKu0G0uvT1w2/6IXBOm624v4BZmdAB/BkFWLcOeCpkDn+zKrRvc3/IWCnFRVTCXDysN4FmSc7DS+Zw==
 
-"@hti-auth/react-web@^1.2.0":
-  version "1.2.0"
-  resolved "https://europe-west1-npm.pkg.dev/hti-build/hti-npm/@hti-auth/react-web/-/@hti-auth/react-web-1.2.0.tgz#99b94c7c11836d1e9488e51eb5c3e1169b267780"
-  integrity sha512-Lk+Hc6ZRizDITlnABHQL288kEmjGWpR05q4xAtdJdtS5xncVdzPYuYSVGa8oZtLLGzVIbHhvnwm3dVa6RiH+Zw==
+"@hti-auth/react-web@^1.2.1":
+  version "1.2.1"
+  resolved "https://europe-west1-npm.pkg.dev/hti-build/hti-npm/@hti-auth/react-web/-/@hti-auth/react-web-1.2.1.tgz#737cab972975cdf9923c78f1bc5413f640adbcf3"
+  integrity sha512-+O1WXZ94HF8F0j8QYx5KCNdZSXmrfGsMDa8pzA1U81jTP0BUfo094Lv7zdwRhL9ZLJmINUYqvRbTdhpJBkEXJQ==
 
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
