@@ -80,7 +80,7 @@
                                  ;; Needed for HTI Auth
                                  "https://fonts.gstatic.com"
                                  (when config/is-dev?
-                                   "localhost:8080")]
+                                   "*:8080")]
                   :img-src      ["*"
                                  "'self' data:"]
                   :connect-src  ["'self'"

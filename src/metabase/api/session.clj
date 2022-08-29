@@ -311,7 +311,7 @@
              response {:id (str session-uuid)}
              user (db/select-one [User :id :is_active], :email (:email user))]
          (if (and user (:is_active user))
-           (mw.session/set-session-cookie request response session)
+           (mw.session/set-session-cookies request response session (t/zoned-date-time (t/zone-id "GMT")))
            (throw (ex-info (str disabled-account-message)
                            {:status-code 401
                             :errors      {:account disabled-account-snippet}}))))))))
