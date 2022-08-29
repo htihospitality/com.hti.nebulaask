@@ -20,9 +20,7 @@ apt ugrade -Y
 
 echo "Installing Node"
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-apt install -y nodejs npm
-apt-get update
-apt-get upgrade
+sudo apt-get install -y nodejs npm
 echo "Node Version"
 node -v
 
