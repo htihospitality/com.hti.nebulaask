@@ -20,6 +20,8 @@ apt ugrade -Y
 
 echo "Installing Node"
 apt install -y nodejs npm
+echo "Node Version"
+node -v
 
 echo "Installing Yarn"
 npm install yarn --global --force
