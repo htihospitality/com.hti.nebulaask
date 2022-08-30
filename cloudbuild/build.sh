@@ -24,7 +24,7 @@ curl --version
 
 echo "Installing Node"
 curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-apt install -y nodejs npm
+apt install -y nodejs
 echo "Node Version"
 node -v
 
