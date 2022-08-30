@@ -29,7 +29,7 @@ echo "Node Version"
 node -v
 
 echo "Installing Yarn"
-npm install yarn --global --force
+npm install -y yarn --global --force
 echo "Yarn Version"
 yarn -v
 #echo "Running Yarn"
