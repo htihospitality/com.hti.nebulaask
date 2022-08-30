@@ -18,7 +18,7 @@ apt update
 apt ugrade -Y
 
 echo "install curl"
-apt-get install curl
+apt-get install -y curl
 echo "Curl version "
 curl --version
 
