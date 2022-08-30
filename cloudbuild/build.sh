@@ -13,13 +13,15 @@ echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:username=_json_key_base64 >> 
 echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:email=not.valid@email.com >> ~/.npmrc
 echo //europe-west1-npm.pkg.dev/hti-build/hti-npm/:always-auth=true >> ~/.npmrc
 
+echo "install curl"
+apt install curl
+echo "Curl version " curl --version
 
 echo "Starting update and upgrade"
 apt update
 apt ugrade -Y
 
 echo "Installing Node"
-apt install curl
 curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 apt install -y nodejs npm
 echo "Node Version"
