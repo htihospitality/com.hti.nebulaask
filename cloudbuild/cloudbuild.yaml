@@ -8,7 +8,7 @@ steps:
 
   # Copy uberjar to compute engine vm
   - name: gcr.io/cloud-builders/gcloud
-    args: ['gsutil', 'cp', '/workspace/target/uberjar/metabase.jar', 'gs://ask_nebula_jar/metabase.jar']
+    args: ['gcloud', 'alpha', 'storage', 'cp', '/workspace/target/uberjar/metabase.jar', 'gs://ask_nebula_jar']
     dir: 'server'
 
 #  # Backup jar
