@@ -6,25 +6,20 @@ steps:
     dir: 'server'
     secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
 
-  # Copy uberjar to compute engine vm
+  # Backup jar
   - name: gcr.io/cloud-builders/gcloud
-    args: ['gcloud', 'alpha', 'storage', 'cp', '/workspace/target/uberjar/metabase.jar', 'gs://ask_nebula_jar']
+    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/backup.sh',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
     dir: 'server'
 
-#  # Backup jar
-#  - name: gcr.io/cloud-builders/gcloud
-#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/backup.sh',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
-#    dir: 'server'
-#
-#  # Copy uberjar to compute engine vm
-#  - name: gcr.io/cloud-builders/gcloud
-#    args: ['compute', 'scp', '/workspace/target/uberjar/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-d']
-#    dir: 'server'
-#
-#  # Restart payment-switch service
-#  - name: gcr.io/cloud-builders/gcloud
-#    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-d']
-#    dir: 'server'
+  # Copy uberjar to compute engine vm
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'scp', '/workspace/target/uberjar/metabase.jar', 'metabase:/opt/metabase/metabase.jar', '--project=hti-${_ENV}', '--zone=europe-west1-d']
+    dir: 'server'
+
+  # Restart payment-switch service
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['compute', 'ssh', 'metabase', '--command=/opt/metabase/restart.sh', '--project=hti-${_ENV}', '--zone=europe-west1-d']
+    dir: 'server'
 
 substitutions:
   _ENV: 'apps'
