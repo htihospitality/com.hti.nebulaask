@@ -39,6 +39,9 @@ apt install -y python-pip
 pip install numpy
 echo "is NumPy installed?"
 pip show
+
+echo "is pip3 installed?"
+pip3 install numpy
 pip3 show numpy
 
 
