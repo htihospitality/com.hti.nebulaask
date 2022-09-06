@@ -36,7 +36,7 @@ yarn -v
 #yarn
 
 echo "is pip3 installed?"
-sudo apt install python3-pip
+apt install python3-pip
 pip3 install numpy
 pip3 show numpy
 
