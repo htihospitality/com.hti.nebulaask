@@ -37,6 +37,9 @@ yarn -v
 
 apt install -y python-pip
 pip install numpy
+echo "is NumPy installed?"
+pip show numpy
+
 
 echo "Starting build"
 #../bin/build
