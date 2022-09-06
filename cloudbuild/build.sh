@@ -37,5 +37,5 @@ yarn -v
 
 
 echo "Starting build"
-../bin/build
+#../bin/build
 
