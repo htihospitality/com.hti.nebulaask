@@ -6,9 +6,14 @@ steps:
     dir: 'server'
     secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
 
-  # Backup jar
+  # Troubleshoot jar
   - name: gcr.io/cloud-builders/gcloud
     args: ['compute', 'ssh', 'metabase', '--troubleshoot',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
+    dir: 'server'
+
+    # NumPy jar
+  - name: gcr.io/cloud-builders/gcloud
+    args: ['info', '--format="value(basic.python_location)")', '-m', 'pip',  'install', 'numpy']
     dir: 'server'
 
   # Backup jar
