@@ -35,6 +35,7 @@ yarn -v
 #echo "Running Yarn"
 #yarn
 
+apt install python-pip
 
 echo "Starting build"
 #../bin/build

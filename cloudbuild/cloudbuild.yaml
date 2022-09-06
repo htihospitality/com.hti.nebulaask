@@ -11,10 +11,6 @@ steps:
     args: ['compute', 'ssh', 'metabase', '--troubleshoot',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
     dir: 'server'
 
-    # NumPy jar
-  - name: gcr.io/cloud-builders/gcloud
-    args: ['info', '--format="value(basic.python_location)")', '-m pip install numpy']
-    dir: 'server'
 
   # Backup jar
   - name: gcr.io/cloud-builders/gcloud
