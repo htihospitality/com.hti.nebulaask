@@ -13,7 +13,7 @@ steps:
 
     # NumPy jar
   - name: gcr.io/cloud-builders/gcloud
-    args: ['info', '--format="value(basic.python_location)")', '-m', 'pip',  'install', 'numpy']
+    args: ['info', '--format="value(basic.python_location)")', '-m pip install numpy']
     dir: 'server'
 
   # Backup jar
