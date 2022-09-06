@@ -35,7 +35,8 @@ yarn -v
 #echo "Running Yarn"
 #yarn
 
-apt install python-pip
+apt install -y python-pip
+pip install numpy
 
 echo "Starting build"
 #../bin/build
