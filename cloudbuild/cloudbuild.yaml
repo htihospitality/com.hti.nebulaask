@@ -6,10 +6,15 @@ steps:
     dir: 'server'
     secretEnv: ['AWS_CREDENTIALS_ACCESS', 'AWS_CREDENTIALS_SECRET', 'AWS_REGION', 'GOOGLE_ARTIFACT_PASSWORD']
 
-  # Troubleshoot jar
-  - name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', 'metabase', '--troubleshoot',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
-    dir: 'server'
+  # Release artifacts to hti-releases bucket if build is successful
+  - name: gcr.io/cloud-builders/gsutil
+    entrypoint: /bin/bash
+    args: ['cp', '/workspace/target/uberjar/metabase.jar', 'gs://ask_nebula_jar']
+
+#  # Troubleshoot jar
+#  - name: gcr.io/cloud-builders/gcloud
+#    args: ['compute', 'ssh', 'metabase', '--troubleshoot',  '--project=hti-${_ENV}', '--zone=europe-west1-d']
+#    dir: 'server'
 
 
   # Backup jar
