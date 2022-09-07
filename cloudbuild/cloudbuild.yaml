@@ -8,8 +8,7 @@ steps:
 
   # Release artifacts to hti-releases bucket if build is successful
   - name: gcr.io/cloud-builders/gsutil
-    entrypoint: /bin/bash
-    args: ['cp', '/workspace/target/uberjar/metabase.jar', 'gs://ask_nebula_jar']
+    args: ['-m', 'cp', '/workspace/target/uberjar/metabase.jar', 'gs://ask_nebula_jar']
 
 #  # Troubleshoot jar
 #  - name: gcr.io/cloud-builders/gcloud
