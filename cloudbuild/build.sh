@@ -43,5 +43,5 @@ pip3 show numpy
 
 
 echo "Starting build"
-#../bin/build
+../bin/build
 
