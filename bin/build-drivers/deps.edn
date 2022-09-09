@@ -16,7 +16,9 @@
   stencil/stencil                 {:mvn/version "0.5.0"}
   ;; local source
   metabase/metabase-core          {:local/root "../.."}
-  metabase/driver-modules         {:local/root "../../modules/drivers"}}
+  metabase/driver-modules         {:local/root "../../modules/drivers"}
+  com.hti/hti-auth-server-2                 {:mvn/version "1.1.0"
+                                             #_#_:exclusions [com.google.api-client/google-api-client]}}
 
  :jvm-opts
  ["-XX:-OmitStackTraceInFastThrow"]
@@ -29,4 +31,5 @@
   {:extra-paths ["test"]
    :extra-deps  {com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"
                                             :sha     "209b64504cb3bd3b99ecfec7937b358a879f55c1"}}
-   :main-opts   ["-m" "cognitect.test-runner"]}}}
+   :main-opts   ["-m" "cognitect.test-runner"]}}
+ :mvn/repos {"hti-maven-repo.aws" {:url "s3://hti-maven-repo/release/"}}}
